@@ -6,15 +6,18 @@ export const fetchData = async (country) => {
   let changeableUrl = url;
 
   if (country) {
-    changeableUrl = `${url}/countries/${country}`;
+    changeableUrl = `https://disease.sh/v3/covid-19/historical/${country}?lastdays=15
+    `;
   }
 
   try {
     const {
-      data: { confirmed, recovered, deaths, lastUpdate },
+      data: {
+        timeline: { cases, deaths, recovered },
+      },
     } = await axios.get(changeableUrl);
 
-    return { confirmed, recovered, deaths, lastUpdate };
+    return { cases, deaths, recovered };
   } catch (error) {
     return error;
   }
@@ -22,11 +25,14 @@ export const fetchData = async (country) => {
 
 export const fetchDailyData = async () => {
   try {
-    const { data } = await axios.get(`${url}/daily`);
+    const { data } = await axios.get(
+      'https://api.covidtracking.com/v1/us/daily.json'
+    );
 
-    return data.map(({ confirmed, deaths, reportDate: date }) => ({
-      confirmed: confirmed.total,
-      deaths: deaths.total,
+    return data.map(({ positive, recovered, death, dateChecked: date }) => ({
+      confirmed: positive,
+      recovered,
+      deaths: death,
       date,
     }));
   } catch (error) {

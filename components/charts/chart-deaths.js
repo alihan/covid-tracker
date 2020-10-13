@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import { fetchData, fetchDailyData } from '../pages/api/country';
+import React from 'react'
+import { Line } from 'react-chartjs-2'
 
-export default function LineRecovered({ data }) {
+export default function LineDeaths({ data }) {
   const DailyData = {
     labels: Object.keys(data),
 
@@ -26,15 +25,15 @@ export default function LineRecovered({ data }) {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: Object.values(data),
-      },
-    ],
-  };
+        data: Object.values(data)
+      }
+    ]
+  }
 
   return (
     <div>
-      <h2>Line Example Recovery Baby</h2>
+      <h2>Line Example They all dead :/ </h2>
       <Line data={DailyData} />
     </div>
-  );
+  )
 }

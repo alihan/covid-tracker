@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import fetcher from '../lib/fetch';
+import ReactFlagsSelect from 'react-flags-select';
 
 import { NativeSelect, FormControl } from '@material-ui/core';
-import Photo from './photo';
+import Photo from './avatar';
 import { fetchCountries } from '../pages/api/country';
 
 const CountryPicker = ({ country, handleCountryChange }) => {
@@ -35,20 +36,22 @@ const CountryPicker = ({ country, handleCountryChange }) => {
     .map(({ flag }) => flag)[0];
 
   return (
-    <FormControl>
-      {country && <Photo src={foundValue}></Photo>}
-      <NativeSelect
-        defaultValue=""
-        onChange={(e) => handleCountryChange(e.target.value)}
-      >
-        <option value="">Global</option>
-        {allCountries.map((country, i) => (
-          <option key={i} value={country}>
-            {country}
-          </option>
-        ))}
-      </NativeSelect>
-    </FormControl>
+    <>
+      <from>
+        {country && <Photo src={foundValue}></Photo>}
+        <select
+          defaultValue=""
+          onChange={(e) => handleCountryChange(e.target.value)}
+        >
+          <option value="">Global</option>
+          {allCountries.map((country, i) => (
+            <option key={i} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
+      </from>
+    </>
   );
 };
 

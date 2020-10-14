@@ -11,4 +11,4 @@ function Main({ children }) {
   )
 }
 
-export default Header
+export default Main

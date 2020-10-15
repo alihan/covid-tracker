@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import style from './chart.module.scss'
 
 export default function LineExample({ data }) {
   const DailyData = {
@@ -32,7 +33,7 @@ export default function LineExample({ data }) {
   };
 
   return (
-    <div>
+    <div className={style.graphContainer}>
       <h2>Line Example</h2>
       <Line data={DailyData} 
       width={2}

@@ -38,7 +38,64 @@ export default function LineDeaths({ data }) {
   return (
     <div>
       <h2>Line Example They all dead :/ </h2>
-      <Line data={DailyData} />
+      <Line data={DailyData} options={{
+        tooltips: {
+          intersect: false,
+          backgroundColor: 'rgb(45, 47, 58)',
+          cornerRadius: 2,
+          bodyFontColor: '#E23428',
+          bodyAlign: 'center',
+          bodyFontSize: 14,
+          bodyFontStyle: 'bold',
+          titleFontFamily: 'Inter',
+          displayColors: false,
+          xPadding: 10,
+          yPadding: 10,
+          callbacks: {
+            title: () => '',
+            label: d => `${d.value} Recovered`,
+          },
+        },
+        maintainAspectRatio: true,
+        responsive: true,
+        legend: {
+          display: false,
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                color: 'rgba(160, 174, 192,0.2)',
+                borderDash: [0],
+                lineWidth: 1,
+                drawBorder: true,
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: '#fff',
+                fontSize: 14,
+                padding: 24,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              gridLines: {
+                color: 'rgba(160, 174, 192, 0.2 )',
+                borderDash: [0],
+                lineWidth: 1,
+                drawBorder: true,
+                drawTicks: false,
+              },
+              ticks: {
+                fontColor: '#fff',
+                fontSize: 14,
+                padding: 21,
+              },
+            },
+          ],
+        },
+      }} />
     </div>
   )
 }

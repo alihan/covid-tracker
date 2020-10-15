@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.main {
+  margin-top: 5rem;
+}
+
+.title {
+  color: $color;
+  font-size: $title-font-size;
+  font-weight: $title-font-weight;
+}

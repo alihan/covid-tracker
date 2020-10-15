@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import fetcher from '../lib/fetch';
-import ReactFlagsSelect from 'react-flags-select';
 
 import { NativeSelect, FormControl } from '@material-ui/core';
 import Photo from './avatar';
@@ -37,7 +36,7 @@ const CountryPicker = ({ country, handleCountryChange }) => {
 
   return (
     <>
-      <from>
+      <form>
         {country && <Photo src={foundValue}></Photo>}
         <select
           defaultValue=""
@@ -50,7 +49,7 @@ const CountryPicker = ({ country, handleCountryChange }) => {
             </option>
           ))}
         </select>
-      </from>
+      </form>
     </>
   );
 };

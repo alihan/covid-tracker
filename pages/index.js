@@ -6,7 +6,8 @@ import LineExample from '../components/charts/chart-cases';
 import CountryPicker from '../components/country-picker';
 import LineRecovered from '../components/charts/chart-recovered';
 import LineDeaths from '../components/charts/chart-deaths';
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
+
 
 
 const Profile = () => {
@@ -59,7 +60,7 @@ const Profile = () => {
         {type === 'deaths' && country && (
           <LineDeaths data={dailyData.deaths} country={country} />
         )}
-      </div>
+        </div>
     </Layout>
   );
 };

@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.cardContainer {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  background-color: rgb(51, 54, 65);
+  padding: 30px 40px;
+  margin: 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: $title-font-size;
+  font-weight: $title-font-weight;
+}
+
+.cases {
+  color: $tangerine-color;
+}
+
+.deaths {
+  color: $red-color;
+}
+
+.recovered {
+  color: $green-color;
+}

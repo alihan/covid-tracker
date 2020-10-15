@@ -9,7 +9,6 @@ export const fetchData = async (country) => {
     changeableUrl = `https://disease.sh/v3/covid-19/historical/${country}?lastdays=15
     `;
   }
-
   try {
     const {
       data: {
@@ -23,18 +22,15 @@ export const fetchData = async (country) => {
   }
 };
 
-export const fetchDailyData = async () => {
+export const fetchGlobalData = async () => {
   try {
-    const { data } = await axios.get(
-      'https://api.covidtracking.com/v1/us/daily.json'
+    const { data : {
+      cases, deaths, recovered, casesPerOneMillion, deathsPerOneMillion, recoveredPerOneMillion
+    } } = await axios.get(
+      'https://disease.sh/v3/covid-19/all'
     );
 
-    return data.map(({ positive, recovered, death, dateChecked: date }) => ({
-      confirmed: positive,
-      recovered,
-      deaths: death,
-      date,
-    }));
+    return {cases, deaths, recovered, casesPerOneMillion, deathsPerOneMillion, recoveredPerOneMillion};
   } catch (error) {
     return error;
   }

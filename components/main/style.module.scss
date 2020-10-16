@@ -2,10 +2,66 @@
 
 .main {
   margin-top: 5rem;
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
   color: $color;
   font-size: $title-font-size;
   font-weight: $title-font-weight;
+  margin-right: 10px;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 15px 30px;
+  margin-right: 10px;
+  background: transparent;
+  font-weight: 500;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+.cases {
+  color: $tangerine-color;
+
+  &:focus, &:hover {
+    outline: none;
+    background-color: $tangerine-color;
+    color: $color;
+  }
+}
+
+.recovered {
+  color: $green-color;
+
+  &:focus, &:hover {
+    outline: none;
+    background-color: $green-color;
+    color: $color;
+  }
+}
+
+.deaths {
+  color: $red-color;
+
+  &:focus, &:hover {
+    outline: none;
+    background-color: $red-color;
+    color: $color;
+  }
 }

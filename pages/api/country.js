@@ -36,13 +36,16 @@ export const fetchGlobalData = async () => {
   }
 };
 
-export const fetchCountries = async () => {
+export const fetchCountryData = async (country) => {
   try {
-    const {
-      data: { countries },
-    } = await axios.get(`${url}/countries`);
+    const { data : {
+      cases, deaths, recovered, casesPerOneMillion, deathsPerOneMillion, recoveredPerOneMillion
+    } } = await axios.get(
+      `https://disease.sh/v3/covid-19/countries/${country}?strict=true
+      `
+    );
 
-    return countries.map((country) => country.name);
+    return {cases, deaths, recovered, casesPerOneMillion, deathsPerOneMillion, recoveredPerOneMillion};
   } catch (error) {
     return error;
   }

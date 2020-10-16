@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  margin: 2rem 0;
+}
+
+.select {
+  background: transparent;
+  color: $color;
+  padding: 10px 15px;
+  border: 1px solid $color;
+  border-radius: 4px;
+}
+
+option {
+  color: $primary;
+  font-size: 15px;
+  padding: 20px 0;
+}

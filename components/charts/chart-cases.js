@@ -3,6 +3,8 @@ import { Line } from 'react-chartjs-2';
 import style from './chart.module.scss'
 
 export default function LineExample({ data }) {
+  if(!data) return <h1>error</h1>
+
   const DailyData = {
     labels: Object.keys(data),
 
@@ -31,7 +33,6 @@ export default function LineExample({ data }) {
       },
     ],
   };
-
   return (
     <div className={style.graphContainer}>
       <h2>Line Example</h2>

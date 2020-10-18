@@ -13,13 +13,14 @@ import LineDeaths from '../charts/chart-deaths'
 import CountryPicker from '../country-picker'
 import Photo from '../avatar'
 import fetcher from '../../lib/fetch'
+import Loading from '../loading'
 
 import style from './style.module.scss'
 
 function Main() {
   const [globalData, setGlobalData] = useState('')
   const [type, setType] = useState('cases')
-  const [country, setCountry] = useState('')
+  const [country, setCountry] = useState('Global')
   const [dailyData, setDailyData] = useState()
 
   const { data, error } = useSWR(
@@ -27,11 +28,20 @@ function Main() {
     `,
     fetcher
   )
+  console.log(country)
 
   useEffect(() => {
     const fetchAPI = async (country) => {
-      const data = await fetchData(country)
+      const data = await fetchData('Global')
       setDailyData(data)
+    }
+    fetchAPI()
+  }, [])
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const globalData = await fetchGlobalData('Global')
+      setGlobalData(globalData)
     }
     fetchAPI()
   }, [])
@@ -43,13 +53,6 @@ function Main() {
     setGlobalData(countryAllData)
     setCountry(country)
   }
-  useEffect(() => {
-    const fetchAPI = async () => {
-      const globalData = await fetchGlobalData()
-      setGlobalData(globalData)
-    }
-    fetchAPI()
-  }, [])
 
   if (data) {
     const allCountries = data?.map((item) => item.country)
@@ -62,22 +65,23 @@ function Main() {
     var foundValue = countriesFlag
       .filter((obj) => obj.country === `${country}`)
       .map(({ flag }) => flag)[0]
-    console.log(countriesFlag)
   }
 
   if (!dailyData) {
-    console.log(type)
-    return <h1>erroadsdasr</h1>
+    return <Loading />
   }
-  console.log(dailyData.cases)
+
   return (
     <main className={style.main}>
       <div className={style.titleContainer}>
-        <h2 className={style.title}>Coronavirus COVID-19 {country} Cases</h2>
+        <h2 className={style.title}>
+          Coronavirus COVID-19{' '}
+          <span className={style.countryName}>{country}</span> Cases
+        </h2>
         {country && <Photo src={foundValue}></Photo>}
       </div>
       <section>
-        <Card data={globalData} />
+        {globalData && <Card data={globalData} />}
         <div>
           <CountryPicker
             country={country}
@@ -103,13 +107,11 @@ function Main() {
               Recovered
             </button>
           </div>
-          {type === 'cases' && country && (
-            <LineExample data={dailyData.cases} />
-          )}
-          {type === 'recovered' && country && (
+          {type === 'cases' && <LineExample data={dailyData.cases} />}
+          {type === 'recovered' && (
             <LineRecovered data={dailyData.recovered} country={country} />
           )}
-          {type === 'deaths' && country && (
+          {type === 'deaths' && (
             <LineDeaths data={dailyData.deaths} country={country} />
           )}
         </div>

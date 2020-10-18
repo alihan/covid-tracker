@@ -1,7 +1,12 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
+import style from './chart.module.scss'
+import dateFormat from 'dateformat'
+import numberFormat from '../../utils/numberFormat'
 
 export default function LineDeaths({ data }) {
+  if (!data) return <h1>error</h1>
+
   const DailyData = {
     labels: Object.keys(data),
 
@@ -30,72 +35,80 @@ export default function LineDeaths({ data }) {
         pointDotStrokeWidth: 2,
         datasetStrokeWidth: 3,
         responsive: true,
-        data: Object.values(data),
-      },
-    ],
+        data: Object.values(data)
+      }
+    ]
   }
 
   return (
-    <div>
-      <h2>Line Example They all dead :/ </h2>
-      <Line data={DailyData} options={{
-        tooltips: {
-          intersect: false,
-          backgroundColor: 'rgb(45, 47, 58)',
-          cornerRadius: 2,
-          bodyFontColor: '#E23428',
-          bodyAlign: 'center',
-          bodyFontSize: 14,
-          bodyFontStyle: 'bold',
-          titleFontFamily: 'Inter',
-          displayColors: false,
-          xPadding: 10,
-          yPadding: 10,
-          callbacks: {
-            title: () => '',
-            label: d => `${d.value} Recovered`,
+    <div className={style.container}>
+      <Line
+        data={DailyData}
+        options={{
+          tooltips: {
+            intersect: false,
+            backgroundColor: 'rgb(45, 47, 58)',
+            cornerRadius: 2,
+            bodyFontColor: '#E23428',
+            bodyAlign: 'center',
+            bodyFontSize: 14,
+            bodyFontStyle: 'bold',
+            titleFontFamily: 'Inter',
+            displayColors: false,
+            xPadding: 10,
+            yPadding: 10,
+            callbacks: {
+              title: () => '',
+              label: (d) => `${numberFormat(d.value)} Deaths`
+            }
           },
-        },
-        maintainAspectRatio: true,
-        responsive: true,
-        legend: {
-          display: false,
-        },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                color: 'rgba(160, 174, 192,0.2)',
-                borderDash: [0],
-                lineWidth: 1,
-                drawBorder: true,
-                drawTicks: false,
-              },
-              ticks: {
-                fontColor: '#fff',
-                fontSize: 14,
-                padding: 24,
-              },
-            },
-          ],
-          yAxes: [
-            {
-              gridLines: {
-                color: 'rgba(160, 174, 192, 0.2 )',
-                borderDash: [0],
-                lineWidth: 1,
-                drawBorder: true,
-                drawTicks: false,
-              },
-              ticks: {
-                fontColor: '#fff',
-                fontSize: 14,
-                padding: 21,
-              },
-            },
-          ],
-        },
-      }} />
+          maintainAspectRatio: true,
+          responsive: true,
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  color: 'rgba(160, 174, 192,0.2)',
+                  borderDash: [0],
+                  lineWidth: 1,
+                  drawBorder: true,
+                  drawTicks: false
+                },
+                ticks: {
+                  callback: function (value) {
+                    return dateFormat(value, 'd/mm/yy')
+                  },
+                  fontColor: '#fff',
+                  fontSize: 14,
+                  padding: 24
+                }
+              }
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  color: 'rgba(160, 174, 192, 0.2 )',
+                  borderDash: [0],
+                  lineWidth: 1,
+                  drawBorder: true,
+                  drawTicks: false
+                },
+                ticks: {
+                  callback: function (value) {
+                    return numberFormat(value)
+                  },
+                  fontColor: '#fff',
+                  fontSize: 14,
+                  padding: 21
+                }
+              }
+            ]
+          }
+        }}
+      />
     </div>
   )
 }

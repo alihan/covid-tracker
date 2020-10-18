@@ -7,10 +7,15 @@
   flex-direction: column;
   align-items: center;
 }
+
 .titleContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.countryName {
+  color: rgb(255, 88, 116);
 }
 
 .title {
@@ -25,6 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .button {
@@ -39,7 +45,8 @@
 .cases {
   color: $tangerine-color;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
     background-color: $tangerine-color;
     color: $color;
@@ -49,7 +56,8 @@
 .recovered {
   color: $green-color;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
     background-color: $green-color;
     color: $color;
@@ -59,7 +67,8 @@
 .deaths {
   color: $red-color;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: none;
     background-color: $red-color;
     color: $color;

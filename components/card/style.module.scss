@@ -10,10 +10,11 @@
 }
 
 .card {
-  background-color: rgb(51, 54, 65);
-  width: 300px;
-  height: 150px;
+  background-color:rgb(40, 48, 65);
+  width: 360px;
+  height: 180px;
   margin: 0 20px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +23,11 @@
 
 .title {
   font-size: $title-font-size;
+  font-weight: $title-font-weight;
+}
+
+.description {
+  font-size: 24px;
   font-weight: $title-font-weight;
 }
 

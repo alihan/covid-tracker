@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
 
 .header {
   display: flex;
@@ -16,6 +17,9 @@
   font-size: $title-font-size;
   font-weight: $title-font-weight;
   margin-right: 20px;
+  @include mq('mobile') {
+    font-size: $title-mobile-font-size;
+  }
 }
 
 .icon {

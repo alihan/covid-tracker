@@ -5,9 +5,13 @@
   overflow-x: auto;
 }
 .container {
+  position: relative;
   @include mq('mobile') {
-    position: relative;
     width: 40.25rem;
     margin-right: -15rem;
+  }
+  @include mq('tablet') {
+    width: 58.25rem;
+    margin-left: 4rem;
   }
 }

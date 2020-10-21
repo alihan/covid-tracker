@@ -41,74 +41,76 @@ export default function LineDeaths({ data }) {
   }
 
   return (
-    <div className={style.container}>
-      <Line
-        data={DailyData}
-        options={{
-          tooltips: {
-            intersect: false,
-            backgroundColor: 'rgb(45, 47, 58)',
-            cornerRadius: 2,
-            bodyFontColor: '#E23428',
-            bodyAlign: 'center',
-            bodyFontSize: 14,
-            bodyFontStyle: 'bold',
-            titleFontFamily: 'Inter',
-            displayColors: false,
-            xPadding: 10,
-            yPadding: 10,
-            callbacks: {
-              title: () => '',
-              label: (d) => `${numberFormat(d.value)} Deaths`
+    <div className={style.containerContainer}>
+      <div className={style.container}>
+        <Line
+          data={DailyData}
+          options={{
+            tooltips: {
+              intersect: false,
+              backgroundColor: 'rgb(45, 47, 58)',
+              cornerRadius: 2,
+              bodyFontColor: '#E23428',
+              bodyAlign: 'center',
+              bodyFontSize: 14,
+              bodyFontStyle: 'bold',
+              titleFontFamily: 'Inter',
+              displayColors: false,
+              xPadding: 10,
+              yPadding: 10,
+              callbacks: {
+                title: () => '',
+                label: (d) => `${numberFormat(d.value)} Deaths`
+              }
+            },
+            maintainAspectRatio: true,
+            responsive: true,
+            legend: {
+              display: false
+            },
+            scales: {
+              xAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(160, 174, 192,0.2)',
+                    borderDash: [0],
+                    lineWidth: 1,
+                    drawBorder: true,
+                    drawTicks: false
+                  },
+                  ticks: {
+                    callback: function (value) {
+                      return dateFormat(value, 'd/mm/yy')
+                    },
+                    fontColor: '#fff',
+                    fontSize: 14,
+                    padding: 24
+                  }
+                }
+              ],
+              yAxes: [
+                {
+                  gridLines: {
+                    color: 'rgba(160, 174, 192, 0.2 )',
+                    borderDash: [0],
+                    lineWidth: 1,
+                    drawBorder: true,
+                    drawTicks: false
+                  },
+                  ticks: {
+                    callback: function (value) {
+                      return numberFormat(value)
+                    },
+                    fontColor: '#fff',
+                    fontSize: 14,
+                    padding: 21
+                  }
+                }
+              ]
             }
-          },
-          maintainAspectRatio: true,
-          responsive: true,
-          legend: {
-            display: false
-          },
-          scales: {
-            xAxes: [
-              {
-                gridLines: {
-                  color: 'rgba(160, 174, 192,0.2)',
-                  borderDash: [0],
-                  lineWidth: 1,
-                  drawBorder: true,
-                  drawTicks: false
-                },
-                ticks: {
-                  callback: function (value) {
-                    return dateFormat(value, 'd/mm/yy')
-                  },
-                  fontColor: '#fff',
-                  fontSize: 14,
-                  padding: 24
-                }
-              }
-            ],
-            yAxes: [
-              {
-                gridLines: {
-                  color: 'rgba(160, 174, 192, 0.2 )',
-                  borderDash: [0],
-                  lineWidth: 1,
-                  drawBorder: true,
-                  drawTicks: false
-                },
-                ticks: {
-                  callback: function (value) {
-                    return numberFormat(value)
-                  },
-                  fontColor: '#fff',
-                  fontSize: 14,
-                  padding: 21
-                }
-              }
-            ]
-          }
-        }}
-      />
+          }}
+        />
+      </div>
     </div>
   )
 }

@@ -1,11 +1,13 @@
 @import '../../styles/mixin.scss';
 
-.container {
+.containerContainer {
+  padding-bottom: 1.5rem;
   overflow-x: auto;
-  position: relative;
+}
+.container {
   @include mq('mobile') {
-    margin-left: 48rem;
-    height: 537px;
-    width: 1075px;
+    position: relative;
+    width: 40.25rem;
+    margin-right: -15rem;
   }
 }

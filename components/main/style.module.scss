@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .button {
@@ -45,6 +45,10 @@
   font-weight: 500;
   border: 2px solid;
   cursor: pointer;
+
+  @include mq('mobile') {
+    padding: 15px;
+  }
 }
 
 .cases {

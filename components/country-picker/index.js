@@ -11,7 +11,7 @@ const CountryPicker = ({ handleCountryChange }) => {
     fetcher
   )
 
-  const allCountries = data.map((item) => item.country)
+  const allCountries = data?.map((item) => item.country)
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -28,7 +28,7 @@ const CountryPicker = ({ handleCountryChange }) => {
         className={style.select}
       >
         <option value="Global">Global</option>
-        {allCountries.map((country, i) => (
+        {allCountries?.map((country, i) => (
           <option key={i} value={country}>
             {country}
           </option>

@@ -71,22 +71,26 @@ function Main() {
     return <Loading />
   }
 
+  if (error) {
+    return <h1>Hata</h1>
+  }
+
   return (
     <main className={style.main}>
       <div className={style.titleContainer}>
         <h2 className={style.title}>
-          Coronavirus COVID-19{' '}
+          Coronavirus COVID-19
           <span className={style.countryName}>{country}</span> Cases
         </h2>
         {country && <Photo src={foundValue}></Photo>}
       </div>
       <section>
+        <CountryPicker
+          country={country}
+          handleCountryChange={handleCountryChange}
+        />
         {globalData && <Card data={globalData} />}
         <div>
-          <CountryPicker
-            country={country}
-            handleCountryChange={handleCountryChange}
-          />
           <div className={style.buttonContainer}>
             <button
               className={cn(style.button, style.cases)}

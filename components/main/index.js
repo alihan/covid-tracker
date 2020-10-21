@@ -68,7 +68,11 @@ function Main() {
   }
 
   if (!dailyData) {
-    return <Loading />
+    return (
+      <main className={style.main}>
+        <Loading />
+      </main>
+    )
   }
 
   if (error) {
@@ -80,7 +84,7 @@ function Main() {
       <div className={style.titleContainer}>
         <h2 className={style.title}>
           Coronavirus COVID-19
-          <span className={style.countryName}>{country}</span> Cases
+          <span className={style.countryName}> {country}</span> Cases
         </h2>
         {country && <Photo src={foundValue}></Photo>}
       </div>
@@ -89,7 +93,7 @@ function Main() {
           country={country}
           handleCountryChange={handleCountryChange}
         />
-        {globalData && <Card data={globalData} />}
+        {globalData && <Card data={globalData} country={country} />}
         <div>
           <div className={style.buttonContainer}>
             <button

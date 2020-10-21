@@ -1,7 +1,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixin.scss';
 
-
 .cardContainer {
   width: 100%;
   display: flex;
@@ -15,7 +14,8 @@
 }
 
 .card {
-  background-color:rgb(40, 48, 65);
+  background-color: rgb(40, 48, 65);
+  position: relative;
   width: 360px;
   height: 180px;
   margin: 0 20px;
@@ -24,15 +24,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   @include mq('mobile') {
     margin-top: 20px;
     width: 340px;
+  }
+
+  & + & {
+    @include mq('mobile') {
+      margin-top: 100px;
+      width: 340px;
+    }
+  }
+
+  @include mq('tablet') {
+    width: 250px;
+    height: 125px;
   }
 }
 
 .title {
   font-size: $title-font-size;
   font-weight: $title-font-weight;
+
+  @include mq('tablet') {
+    font-size: 30px;
+  }
 }
 
 .description {
@@ -50,4 +67,30 @@
 
 .recovered {
   color: $green-color;
+}
+
+.info {
+  color: $greyish-color;
+  font-size: 16px;
+  position: absolute;
+  bottom: -55px;
+  text-align: center;
+  line-height: 23px;
+  font-weight: 300;
+
+  @include mq('tablet') {
+    bottom: -80px;
+  }
+}
+
+.country {
+  color: $country-color;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.highlight {
+  color: $color;
+  font-weight: 700;
+  font-size: 18px;
 }

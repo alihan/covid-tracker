@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
   justify-content: center;
 
   @include mq('mobile') {
@@ -73,7 +73,7 @@
   color: $greyish-color;
   font-size: 16px;
   position: absolute;
-  bottom: -55px;
+  bottom: -80px;
   text-align: center;
   line-height: 23px;
   font-weight: 300;

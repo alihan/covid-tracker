@@ -5,7 +5,12 @@ import dateFormat from 'dateformat'
 import numberFormat from '../../utils/numberFormat'
 
 export default function LineExample({ data }) {
-  if (!data) return <h1>error</h1>
+  if (!data)
+    return (
+      <h1 className={style.error}>
+        This country does not have enough data to display chart.
+      </h1>
+    )
 
   const DailyData = {
     labels: Object.keys(data),

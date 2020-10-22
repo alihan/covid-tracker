@@ -74,11 +74,7 @@ function Main() {
       </main>
     )
   }
-
-  if (error) {
-    return <h1>Hata</h1>
-  }
-
+  
   return (
     <main className={style.main}>
       <div className={style.titleContainer}>

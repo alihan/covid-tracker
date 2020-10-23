@@ -8,7 +8,7 @@ import Main from '../main'
 function Layout() {
   return (
     <div className={style.layout}>
-      <Header/>
+      <Header />
       <Main />
     </div>
   )

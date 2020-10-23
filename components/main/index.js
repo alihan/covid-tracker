@@ -4,18 +4,16 @@ import {
   fetchData,
   fetchCountryData
 } from '../../pages/api/country'
-import cn from 'classnames'
-import Card from '../card'
 import useSWR from 'swr'
-import LineExample from '../charts/chart-cases'
-import LineRecovered from '../charts/chart-recovered'
-import LineDeaths from '../charts/chart-deaths'
+import cn from 'classnames'
+import style from './style.module.scss'
+
+import Card from '../card'
+import * as Chart from '../charts/index'
 import CountryPicker from '../country-picker'
 import Photo from '../avatar'
 import fetcher from '../../lib/fetch'
 import Loading from '../loading'
-
-import style from './style.module.scss'
 
 function Main() {
   const [globalData, setGlobalData] = useState('')
@@ -28,20 +26,13 @@ function Main() {
     `,
     fetcher
   )
-  console.log(country)
-
-  useEffect(() => {
-    const fetchAPI = async (country) => {
-      const data = await fetchData('Global')
-      setDailyData(data)
-    }
-    fetchAPI()
-  }, [])
 
   useEffect(() => {
     const fetchAPI = async () => {
+      const data = await fetchData('Global')
       const globalData = await fetchGlobalData('Global')
       setGlobalData(globalData)
+      setDailyData(data)
     }
     fetchAPI()
   }, [])
@@ -55,7 +46,6 @@ function Main() {
   }
 
   if (data) {
-    const allCountries = data?.map((item) => item.country)
     const countriesFlag = data?.map((item) => {
       var obj = {}
       obj.country = item.country
@@ -74,7 +64,7 @@ function Main() {
       </main>
     )
   }
-  
+
   return (
     <main className={style.main}>
       <div className={style.titleContainer}>
@@ -111,12 +101,12 @@ function Main() {
               Recovered
             </button>
           </div>
-          {type === 'cases' && <LineExample data={dailyData.cases} />}
+          {type === 'cases' && <Chart.Cases data={dailyData.cases} />}
           {type === 'recovered' && (
-            <LineRecovered data={dailyData.recovered} country={country} />
+            <Chart.Recovered data={dailyData.recovered} country={country} />
           )}
           {type === 'deaths' && (
-            <LineDeaths data={dailyData.deaths} country={country} />
+            <Chart.Deaths data={dailyData.deaths} country={country} />
           )}
         </div>
       </section>

@@ -14,10 +14,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   const allCountries = data?.map((item) => item.country)
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      setCountries(allCountries)
-    }
-    fetchAPI()
+    setCountries(allCountries)
   }, [])
 
   return (

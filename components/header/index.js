@@ -2,7 +2,7 @@ import React from 'react'
 
 import style from './style.module.scss'
 
-function Header({ children }) {
+function Header() {
   return (
     <nav className={style.header}>
       <div className={style.titleContainer}>

@@ -5,11 +5,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 90%;
+  @include mq('tablet') {
+    width: 100%;
+  }
 }
 
 .titleContainer {
   display: flex;
   align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 
 .title {
@@ -19,6 +28,23 @@
   margin-right: 20px;
   @include mq('mobile') {
     font-size: $title-mobile-font-size;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.pageHref {
+  text-decoration: none;
+  font-size: $title-mobile-font-size;
+  color: $color;
+  font-weight: 600;
+
+  &:hover {
+    color: $country-color;
+  }
+
+  @include mq('mobile') {
+    margin-right: -40px;
   }
 }
 

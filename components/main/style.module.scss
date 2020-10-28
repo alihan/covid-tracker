@@ -27,6 +27,7 @@
 
   @include mq('mobile') {
     font-size: $title-mobile-font-size;
+    text-align: center;
   }
 }
 
@@ -66,7 +67,7 @@
   color: $green-color;
 
   &:focus,
-  &:hover {
+  t &:hover {
     outline: none;
     background-color: $green-color;
     color: $color;
@@ -81,5 +82,25 @@
     outline: none;
     background-color: $red-color;
     color: $color;
+  }
+}
+
+.protectMain {
+  align-items: flex-start;
+  margin-top: 5rem;
+}
+
+.protectTitle {
+  font-size: 28px;
+  text-align: center;
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  @include mq('tablet') {
+    max-width: 1040px;
   }
 }

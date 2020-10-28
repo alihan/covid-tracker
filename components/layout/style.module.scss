@@ -1,3 +1,8 @@
+@import '../../styles/mixin.scss';
+
 .layout {
   margin: 3rem;
+  @include mq('mobile') {
+    margin: 2rem 1rem;
+  }
 }

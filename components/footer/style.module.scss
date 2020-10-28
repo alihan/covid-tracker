@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixin.scss';
+
+.footer {
+  margin-top: 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-left: 10px;
+    font-size: 30px;
+    &:hover {
+      cursor: pointer;
+      path {
+        fill: $country-color;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.description {
+  font-size: 24px;
+
+  @include mq('mobile') {
+    font-size: 19px;
+  }
+
+  span {
+    color: $country-color;
+  }
+}

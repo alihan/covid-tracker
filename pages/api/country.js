@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const url = 'https://covid19.mathdro.id/api'
+const url = 'https://disease.sh/v3/covid-19/'
 
 export const fetchData = async (country) => {
   let changeableUrl = url
 
   if (country) {
     if (country === 'Global') {
-      changeableUrl = `https://disease.sh/v3/covid-19/historical/all?lastdays=15`
+      changeableUrl = `${url}historical/all?lastdays=15`
       try {
         const {
           data: { cases, deaths, recovered }
@@ -18,7 +18,7 @@ export const fetchData = async (country) => {
         return error
       }
     } else {
-      changeableUrl = `https://disease.sh/v3/covid-19/historical/${country}?lastdays=15
+      changeableUrl = `${url}historical/${country}?lastdays=15
     `
       try {
         const {
@@ -39,7 +39,7 @@ export const fetchGlobalData = async () => {
   try {
     const {
       data: { cases, deaths, recovered, population }
-    } = await axios.get('https://disease.sh/v3/covid-19/all')
+    } = await axios.get(`${url}all`)
 
     return {
       cases,
@@ -57,10 +57,10 @@ export const fetchCountryData = async (country) => {
 
   if (country) {
     if (country === 'Global') {
-      changeableUrl = `https://disease.sh/v3/covid-19/all?yesterday=true
+      changeableUrl = `${url}all?yesterday=true
       `
     } else
-      changeableUrl = `https://disease.sh/v3/covid-19/countries/${country}?strict=true
+      changeableUrl = `${url}countries/${country}?strict=true
       `
   }
 

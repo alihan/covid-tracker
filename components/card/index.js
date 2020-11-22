@@ -1,6 +1,6 @@
 import React from 'react'
-import style from './style.module.scss'
 import cn from 'classnames'
+import style from './style.module.scss'
 import numberFormat from '../../utils/numberFormat'
 
 function Card({ data: { cases, deaths, recovered, population }, country }) {

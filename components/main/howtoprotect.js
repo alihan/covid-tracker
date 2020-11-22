@@ -1,11 +1,10 @@
 import React from 'react'
 import cn from 'classnames'
 import style from './style.module.scss'
-
 import ProtectionCard from '../protection-card'
 import * as Icon from '../icons'
 
-function HowToProtectMain() {
+const HowToProtectMain = () => {
   return (
     <div className={cn(style.main, style.protectMain)}>
       <h1 className={cn(style.title, style.protectTitle)}>

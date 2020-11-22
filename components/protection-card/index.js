@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './style.module.scss'
 
-function ProtectionCard({ icon, description, title }) {
+const ProtectionCard = ({ icon, description, title }) => {
   return (
     <div className={style.card}>
       <div className={style.iconContainer}>{icon}</div>

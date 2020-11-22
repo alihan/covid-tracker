@@ -2,7 +2,7 @@ import React from 'react'
 import HomeMain from './home'
 import HowToProtectMain from './howtoprotect'
 
-function Main({ home, howToProtect }) {
+const Main = ({ home, howToProtect }) => {
   return (
     <main>
       {home && <HomeMain />}

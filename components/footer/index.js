@@ -1,9 +1,8 @@
 import React from 'react'
 import style from './style.module.scss'
-
 import * as Icon from '../icons'
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.container}>

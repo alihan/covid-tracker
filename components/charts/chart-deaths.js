@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
-import style from './chart.module.scss'
 import dateFormat from 'dateformat'
+import style from './chart.module.scss'
 import numberFormat from '../../utils/numberFormat'
 
 export default function LineDeaths({ data }) {
@@ -14,7 +14,6 @@ export default function LineDeaths({ data }) {
 
   const DailyData = {
     labels: Object.keys(data),
-
     datasets: [
       {
         label: 'My First dataset',
@@ -45,76 +44,75 @@ export default function LineDeaths({ data }) {
     ]
   }
 
+  const options = {
+    tooltips: {
+      intersect: false,
+      backgroundColor: 'rgb(45, 47, 58)',
+      cornerRadius: 2,
+      bodyFontColor: '#E23428',
+      bodyAlign: 'center',
+      bodyFontSize: 14,
+      bodyFontStyle: 'bold',
+      titleFontFamily: 'Inter',
+      displayColors: false,
+      xPadding: 10,
+      yPadding: 10,
+      callbacks: {
+        title: () => '',
+        label: (d) => `${numberFormat(d.value)} Deaths`
+      }
+    },
+    maintainAspectRatio: true,
+    responsive: true,
+    legend: {
+      display: false
+    },
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            color: 'rgba(160, 174, 192,0.2)',
+            borderDash: [0],
+            lineWidth: 1,
+            drawBorder: true,
+            drawTicks: false
+          },
+          ticks: {
+            callback: function (value) {
+              return dateFormat(value, 'd/mm/yy')
+            },
+            fontColor: '#fff',
+            fontSize: 14,
+            padding: 24
+          }
+        }
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            color: 'rgba(160, 174, 192, 0.2 )',
+            borderDash: [0],
+            lineWidth: 1,
+            drawBorder: true,
+            drawTicks: false
+          },
+          ticks: {
+            callback: function (value) {
+              return numberFormat(value)
+            },
+            fontColor: '#fff',
+            fontSize: 14,
+            padding: 21
+          }
+        }
+      ]
+    }
+  }
+
   return (
     <div className={style.containerContainer}>
       <div className={style.container}>
-        <Line
-          data={DailyData}
-          options={{
-            tooltips: {
-              intersect: false,
-              backgroundColor: 'rgb(45, 47, 58)',
-              cornerRadius: 2,
-              bodyFontColor: '#E23428',
-              bodyAlign: 'center',
-              bodyFontSize: 14,
-              bodyFontStyle: 'bold',
-              titleFontFamily: 'Inter',
-              displayColors: false,
-              xPadding: 10,
-              yPadding: 10,
-              callbacks: {
-                title: () => '',
-                label: (d) => `${numberFormat(d.value)} Deaths`
-              }
-            },
-            maintainAspectRatio: true,
-            responsive: true,
-            legend: {
-              display: false
-            },
-            scales: {
-              xAxes: [
-                {
-                  gridLines: {
-                    color: 'rgba(160, 174, 192,0.2)',
-                    borderDash: [0],
-                    lineWidth: 1,
-                    drawBorder: true,
-                    drawTicks: false
-                  },
-                  ticks: {
-                    callback: function (value) {
-                      return dateFormat(value, 'd/mm/yy')
-                    },
-                    fontColor: '#fff',
-                    fontSize: 14,
-                    padding: 24
-                  }
-                }
-              ],
-              yAxes: [
-                {
-                  gridLines: {
-                    color: 'rgba(160, 174, 192, 0.2 )',
-                    borderDash: [0],
-                    lineWidth: 1,
-                    drawBorder: true,
-                    drawTicks: false
-                  },
-                  ticks: {
-                    callback: function (value) {
-                      return numberFormat(value)
-                    },
-                    fontColor: '#fff',
-                    fontSize: 14,
-                    padding: 21
-                  }
-                }
-              ]
-            }
-          }}
-        />
+        <Line data={DailyData} options={options} />
       </div>
     </div>
   )

@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import useSWR from 'swr'
 import style from './style.module.scss'
 import fetcher from '../../lib/fetch'
 
 const CountryPicker = ({ handleCountryChange }) => {
-  const [countries, setCountries] = useState([])
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `https://disease.sh/v3/covid-19/countries
     `,
     fetcher
   )
 
   const allCountries = data?.map((item) => item.country)
-
-  useEffect(() => {
-    setCountries(allCountries)
-  }, [])
 
   return (
     <form className={style.formContainer}>

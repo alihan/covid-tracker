@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import useSWR from 'swr'
+import cn from 'classnames'
+import style from './style.module.scss'
 import {
   fetchGlobalData,
   fetchData,
   fetchCountryData
 } from '../../pages/api/country'
-import useSWR from 'swr'
-import cn from 'classnames'
-import style from './style.module.scss'
-
 import Card from '../card'
 import * as Chart from '../charts/index'
 import CountryPicker from '../country-picker'
@@ -15,13 +14,13 @@ import Photo from '../avatar'
 import fetcher from '../../lib/fetch'
 import Loading from '../loading'
 
-function HomeMain() {
+const HomeMain = () => {
   const [globalData, setGlobalData] = useState('')
   const [type, setType] = useState('cases')
   const [country, setCountry] = useState('Global')
   const [dailyData, setDailyData] = useState()
 
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `https://disease.sh/v3/covid-19/countries
     `,
     fetcher

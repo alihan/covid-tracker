@@ -4,13 +4,12 @@ import Link from 'next/link'
 import style from './style.module.scss'
 import * as Icon from '../icons'
 
-function Header() {
+const Header = () => {
   return (
     <nav className={style.header}>
       <Link href="/">
         <div className={style.titleContainer}>
           <h1 className={style.title}>COVID-19 Tracker</h1>
-
           <Icon.Covid />
         </div>
       </Link>

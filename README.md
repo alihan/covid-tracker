@@ -11,7 +11,7 @@ This is the COVID-19 Tracker app. I got inspired by [coronasayac](https://corona
 ```bash
 $ git clone https://github.com/alihan/covid-tracker.git
 $ cd covid-tracker
-$ npm
+$ npm install
 $ npm run dev
 ```
 

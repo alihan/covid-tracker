@@ -2,7 +2,7 @@
 @import '../../styles/mixin.scss';
 
 .card {
-  background-color: rgb(39, 44, 56);
+  background-color: $protection-card-bg;
   position: relative;
   padding: 2rem 2rem;
   max-width: 500px;

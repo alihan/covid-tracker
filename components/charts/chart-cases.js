@@ -4,7 +4,7 @@ import dateFormat from 'dateformat'
 import style from './chart.module.scss'
 import numberFormat from '../../utils/numberFormat'
 
-export default function LineExample({ data }) {
+const LineCases = ({ data }) => {
   if (!data)
     return (
       <h1 className={style.error}>
@@ -114,3 +114,5 @@ export default function LineExample({ data }) {
     </div>
   )
 }
+
+export default LineCases

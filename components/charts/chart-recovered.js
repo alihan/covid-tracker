@@ -4,7 +4,7 @@ import dateFormat from 'dateformat'
 import numberFormat from '../../utils/numberFormat'
 import style from './chart.module.scss'
 
-export default function LineRecovered({ data }) {
+const LineRecovered = ({ data }) => {
   if (!data)
     return (
       <h1 className={style.error}>
@@ -117,3 +117,5 @@ export default function LineRecovered({ data }) {
     </div>
   )
 }
+
+export default LineRecovered

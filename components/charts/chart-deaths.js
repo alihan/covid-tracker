@@ -4,7 +4,7 @@ import dateFormat from 'dateformat'
 import style from './chart.module.scss'
 import numberFormat from '../../utils/numberFormat'
 
-export default function LineDeaths({ data }) {
+const LineDeaths = ({ data }) => {
   if (!data)
     return (
       <h1 className={style.error}>
@@ -117,3 +117,5 @@ export default function LineDeaths({ data }) {
     </div>
   )
 }
+
+export default LineDeaths

@@ -26,6 +26,18 @@ const HomeMain = () => {
     fetcher
   )
 
+  const dataWithFlags = (data) => {
+    const countriesFlag = data?.map((item) => {
+      var obj = {}
+      obj.country = item.country
+      obj.flag = item.countryInfo.flag
+      return obj
+    })
+    return countriesFlag
+      .filter((obj) => obj.country === `${country}`)
+      .map(({ flag }) => flag)[0]
+  }
+
   useEffect(() => {
     const fetchAPI = async () => {
       const data = await fetchData('Global')
@@ -45,15 +57,7 @@ const HomeMain = () => {
   }
 
   if (data) {
-    const countriesFlag = data?.map((item) => {
-      var obj = {}
-      obj.country = item.country
-      obj.flag = item.countryInfo.flag
-      return obj
-    })
-    var foundValue = countriesFlag
-      .filter((obj) => obj.country === `${country}`)
-      .map(({ flag }) => flag)[0]
+    var foundValue = dataWithFlags(data)
   }
 
   if (!dailyData) {
@@ -65,7 +69,7 @@ const HomeMain = () => {
   }
 
   return (
-    <div className={style.main}>
+    <main className={style.main}>
       <div className={style.titleContainer}>
         <h2 className={style.title}>
           Coronavirus COVID-19
@@ -109,7 +113,7 @@ const HomeMain = () => {
           )}
         </div>
       </section>
-    </div>
+    </main>
   )
 }
 

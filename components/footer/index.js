@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className={style.footer}>
       <div className={style.container}>
         <p className={style.description}>
-          This page built with
+          This page is built with
           <a href="https://github.com/alihan/covid-tracker" target="_blank">
             <span> Next.js</span>
           </a>

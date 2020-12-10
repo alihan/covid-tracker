@@ -20,14 +20,14 @@ const Card = ({ data: { cases, deaths, recovered, population }, country }) => {
       <CardItem
         title={numberFormat(deaths)}
         description={'Deaths'}
-        info={'The ratio of the number of deaths to the number of cases'}
+        info={'The ratio of the number of deaths to the number of cases in'}
         country={country}
         percantage={deathPercantage}
       />
       <CardItem
         title={numberFormat(recovered)}
         description={'Recovered'}
-        info={'The ratio of the number of recoveries to the number of cases'}
+        info={'The ratio of the number of recoveries to the number of cases in'}
         country={country}
         percantage={recoveredPercantage}
       />
